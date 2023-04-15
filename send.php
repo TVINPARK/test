@@ -1,24 +1,19 @@
 <?php
-// несколько получателей
-$to  = 'boikoarceniy@yandex.ru' . ', ';  // обратите внимание на запятую
-
-// тема письма
-$subject = 'Письмо с моего сайта';
-
-// текст письма
-$message = 'Пользователь' . $_POST['name'] . ' отправил вам письмо:<br />' . $_POST['message'] . '<br />
-Связяться с ним можно по email <a href="mailto:' . $_POST['email'] . '">' . $_POST['email'] . '</a>'
-;
-
-// Для отправки HTML-письма должен быть установлен заголовок Content-type
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
-
-// Дополнительные заголовки
-$headers .= 'To: Иван <echrnov@yandex.ru>' . "\r\n"; // Свое имя и email
-$headers .= 'From: '  . $_POST['name'] . '<' . $_POST['email'] . '>' . "\r\n";
-
-
-// Отправляем
-mail($to, $subject, $message, $headers);
+/* Здесь проверяется существование переменных */
+if (isset($_POST['name'])) {$phone = $_POST['name'];}
+if (isset($_POST['phone'])) {$name = $_POST['phone'];}
+ 
+/* Сюда впишите свою эл. почту */
+$myaddres  = "email@yandex .ru"; // кому отправляем
+ 
+/* А здесь прописывается текст сообщения, \n - перенос строки */
+$mes = "Тема: Заказ обратного звонка!\nТелефон: $phone\nИмя: $name";
+ 
+/* А эта функция как раз занимается отправкой письма на указанный вами email */
+$sub='Заказ'; //сабж
+$email='Заказ обратного звонка'; // от кого
+$send = mail ($myaddres,$sub,$mes,"Content-type:text/plain; charset = utf-8\r\nFrom:$email");
+ 
+ini_set('short_open_tag', 'On');
+header('Refresh: 3; URL=index.html');
 ?>
