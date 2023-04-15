@@ -18,13 +18,12 @@
     <header>
          <h1>Это мой сайт</h1> 
     </header>
-    <main>
-        <form action="send.php" method="post">
-            <input type="text" name="fio" placeholder="ваше имя" required>
-            <input type="text" name="email" placeholder="ваше e-mail" required>
-            <input type="submit" value="send">
-        </form>
-    </main>
+        <form method="post">
+            Ваше имя: <input type="text" name="name" placeholder="Иван">
+            Email для связи: <input type="email" name="email" placeholder="адрес электронной почты">
+            Ваше сообщение: <textarea name="message" rows="5"></textarea>
+            <input type="submit" value="отправить">
+            </form>
     <div id="content">
         <p>Lorem ipsum rutrum in et integer proin ligula commodo elementum orci integer ultricies rutrum tellus: ornare
             urna, adipiscing a ligula. Enim tellus auctor curabitur porta proin amet elementum&nbsp;&mdash; eros vitae
